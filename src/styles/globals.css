@@ -25,20 +25,117 @@
   --color-primary-700: rgb(var(--tw-color-primary-700)); /* #0369a1 */
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
+
+  --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   /* #endregion  /**======== Primary Color =========== */
+
+  --color-navy-default: #0a192f;
+  --color-navy-dark: #020c1b;
+  --color-navy-light: #112240;
+  --color-navy-50: #233554;
+  --color-navy-shadow: rgba(2, 12, 27, 0.7);
+
+  --color-slate-default: #8892b0;
+  --color-slate-dark: #495670;
+  --color-slate-light: #a8b2d1;
+  --color-slate-50: #ccd6f6;
+  --color-white: #e6f1ff;
+  --color-green: #64ffda;
+  --color-green-tint: rgba(100, 255, 218, 0.1);
+  --color-pink: #f57dff;
+  --color-blue: #57cbff;
 }
 
 @layer base {
   /* inter var - latin */
   @font-face {
-    font-family: 'Inter';
+    font-family: 'Calibre';
     font-style: normal;
-    font-weight: 100 900;
-    font-display: optional;
-    src: url('/fonts/inter-var-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
+    font-weight: 400;
+    src: url('/fonts/Calibre/Calibre-Regular.woff2') format('woff2'),
+      url('/fonts/Calibre/Calibre-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Calibre';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/Calibre/Calibre-Medium.woff2') format('woff2'),
+      url('/fonts/Calibre/Calibre-Medium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Calibre';
+    font-style: italic;
+    font-weight: 500;
+    src: url('/fonts/Calibre/Calibre-MediumItalic.woff2') format('woff2'),
+      url('/fonts/Calibre/Calibre-MediumItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Calibre';
+    font-style: 'normal';
+    font-weight: 600;
+    src: url('/fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),
+      url('/fonts/Calibre/Calibre-Semibold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Calibre';
+    font-style: italic;
+    font-weight: 600;
+    src: url('/fonts/Calibre/Calibre-SemiboldItalic.woff2') format('woff2'),
+      url('/fonts/Calibre/Calibre-SemiboldItalic.woff') format('woff');
+  }
+
+  /* monosan */
+  @font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/SFMono/SFMono-Regular.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: 400;
+    src: url('/fonts/SFMono/SFMono-RegularItalic.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-RegularItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/SFMono/SFMono-Medium.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-Medium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    font-style: italic;
+    font-weight: 500;
+    src: url('/fonts/SFMono/SFMono-MediumItalic.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-MediumItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    font-style: 'normal';
+    font-weight: 600;
+    src: url('/fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-Semibold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'SFMono';
+    font-style: italic;
+    font-weight: 600;
+    src: url('/fonts/SFMono/SFMono-SemiboldItalic.woff2') format('woff2'),
+      url('/fonts/SFMono/SFMono-SemiboldItalic.woff') format('woff');
   }
 
   .cursor-newtab {
@@ -70,9 +167,9 @@
     @apply font-primary text-base font-bold md:text-lg;
   }
 
-  body,
-  .p {
-    @apply font-primary text-sm md:text-base;
+  .big-heading {
+    margin: 0px;
+    font-size: clamp(40px, 8vw, 80px);
   }
   /* #endregion  /**======== Typography =========== */
 
@@ -89,6 +186,14 @@
   /* Class to adjust with sticky footer */
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
+  }
+
+  .transition-custom-all {
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  p {
+    @apply mb-4;
   }
 }
 
@@ -114,5 +219,71 @@
   .animated-underline:hover,
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-[60px] md:py-20 lg:py-[100px];
+  }
+
+  .section-title {
+    @apply flex items-center text-white text-[clamp(26px,5vw,32px)] whitespace-nowrap mt-2.5 mb-10;
+  }
+
+  .section-title::before {
+    @apply relative bottom-1 content-["0"counter(item)"."] [counter-increment:item_1] text-green mr-2 text-[clamp(16px,3vw,20px)] font-mono;
+  }
+
+  .section-title::after {
+    @apply content-[""] w-full ml-2.5 h-[1px] bg-navy-50 md:w-[200px] md:ml-5 relative bottom-1;
+  }
+
+  .profile-pic {
+    box-shadow: 0 10px 30px -15px var(--color-navy-shadow);
+    transition: var(--transition);
+    @apply block relative w-full h-full rounded-[4px] bg-green;
+  }
+
+  .profile-pic::after,
+  .profile-pic::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+    transition: var(--transition);
+  }
+
+  .profile-pic::after {
+    @apply border-2 border-solid border-green top-5 left-5 -z-[1];
+  }
+
+  .profile-pic::before {
+    @apply top-0 left-0 bg-navy mix-blend-screen;
+  }
+
+  .profile-pic:hover::after {
+    @apply top-3 left-3;
+  }
+
+  .profile-pic:hover .wrapper {
+    filter: none;
+    mix-blend-mode: normal;
+  }
+
+  .profile-pic .wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+    position: relative;
+    border-radius: 4px;
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) contrast(1);
+    transition: var(--transition);
+    overflow: hidden;
   }
 }

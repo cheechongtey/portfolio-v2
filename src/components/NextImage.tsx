@@ -12,7 +12,7 @@ type NextImageProps = {
   alt: string;
 } & (
   | { width: string | number; height: string | number }
-  | { layout: 'fill'; width?: string | number; height?: string | number }
+  | { width?: string | number; height?: string | number }
 ) &
   ImageProps;
 
@@ -50,7 +50,7 @@ export default function NextImage({
         width={width}
         height={height}
         alt={alt}
-        onLoadingComplete={() => setStatus('complete')}
+        onLoad={() => setStatus('complete')}
         {...rest}
       />
     </figure>

@@ -34,7 +34,7 @@ export default function ComponentPage() {
   const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
 
   return (
-    <main>
+    <main className='[counter-reset:item]'>
       <section
         className={clsx(mode === 'dark' ? 'bg-dark' : 'bg-white', color)}
       >

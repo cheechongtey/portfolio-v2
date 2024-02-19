@@ -30,7 +30,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading,
       variant = 'primary',
       size = 'base',
-      isDarkBg = false,
       leftIcon: LeftIcon,
       rightIcon: RightIcon,
       classNames,
@@ -46,49 +45,24 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type='button'
         disabled={disabled}
         className={cn(
-          'inline-flex items-center rounded font-medium',
+          'inline-flex items-center rounded',
           'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
           'shadow-sm',
           'transition-colors duration-75',
           //#region  //*=========== Size ===========
           [
-            size === 'base' && ['px-3 py-1.5', 'text-sm md:text-base'],
-            size === 'sm' && ['px-2 py-1', 'text-xs md:text-sm'],
+            size === 'base' && ['px-4 py-3', 'text-sm md:text-base'],
+            size === 'sm' && ['px-4 py-3', 'text-2xs leading-3'],
           ],
           //#endregion  //*======== Size ===========
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
-              'bg-primary-500 text-white',
-              'border-primary-600 border',
-              'hover:bg-primary-600 hover:text-white',
+              'bg-navy text-green',
+              'border-green border',
+              'hover:bg-green-tint transition-colors',
               'active:bg-primary-700',
               'disabled:bg-primary-700',
-            ],
-            variant === 'outline' && [
-              'text-primary-500',
-              'border-primary-500 border',
-              'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
-            ],
-            variant === 'ghost' && [
-              'text-primary-500',
-              'shadow-none',
-              'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
-            ],
-            variant === 'light' && [
-              'bg-white text-gray-700',
-              'border border-gray-300',
-              'hover:text-dark hover:bg-gray-100',
-              'active:bg-white/80 disabled:bg-gray-200',
-            ],
-            variant === 'dark' && [
-              'bg-gray-900 text-white',
-              'border border-gray-600',
-              'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
             ],
           ],
           //#endregion  //*======== Variants ===========

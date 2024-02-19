@@ -56,7 +56,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body className='bg-navy antialiased text-slate font-calibre text-xl leading-[1.3]'>
+        {children}
+      </body>
     </html>
   );
 }

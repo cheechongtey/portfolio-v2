@@ -1,14 +1,36 @@
-import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
-export default {
+const config = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        primary: ['Calibre', 'SF Mono', ...defaultTheme.fontFamily.sans],
+        calibre: ['Calibre', ...defaultTheme.fontFamily.sans],
+        mono: ['SF Mono', ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        navy: {
+          DEFAULT: 'var(--color-navy-default)',
+          light: 'var(--color-navy-light)',
+          dark: 'var(--color-navy-dark)',
+          shadow: 'var(--color-navy-shadow)',
+          50: 'var(--color-navy-50)',
+        },
+        slate: {
+          DEFAULT: 'var(--color-slate-default)',
+          light: 'var(--color-slate-light)',
+          dark: 'var(--color-slate-dark)',
+          50: 'var(--color-slate-50)',
+        },
+        white: 'var(--color-white)',
+        green: {
+          DEFAULT: 'var(--color-green)',
+          tint: 'var(--color-green-tint)',
+        },
+        blue: 'var(--color-blue)',
+        pink: 'var(--color-pink)',
         primary: {
           // Customize it on globals.css :root
           50: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
@@ -50,7 +72,30 @@ export default {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
       },
+      fontSize: {
+        '2xs': '0.8125rem',
+      },
+      height: {
+        'full-dvh': '100dvh',
+      },
+      boxShadow: {
+        profile: '0 10px 30px -15px var(--navy-shadow)',
+      },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
-} satisfies Config;
+  plugins: [
+    require('@tailwindcss/forms'),
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        '.default-link::before': {
+          backgroundColor: theme('colors.white'),
+          borderRadius: theme('borderRadius.lg'),
+          padding: theme('spacing.6'),
+          boxShadow: theme('boxShadow.xl'),
+        },
+      });
+    }),
+  ],
+};
+
+export default config;
