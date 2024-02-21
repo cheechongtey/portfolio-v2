@@ -16,7 +16,11 @@
   },
   "React.useReducer": {
     "prefix": "ur",
-    "body": ["const [state, dispatch] = React.useReducer(${0:someReducer}, {", "  ", "})"]
+    "body": [
+      "const [state, dispatch] = React.useReducer(${0:someReducer}, {",
+      "  ",
+      "})"
+    ]
   },
   "React.useRef": {
     "prefix": "urf",
@@ -182,6 +186,8 @@
 
   "Logger": {
     "prefix": "lg",
-    "body": ["logger({ ${1:${CLIPBOARD}} }, '${TM_FILENAME} line ${TM_LINE_NUMBER}')"]
+    "body": [
+      "logger({ ${1:${CLIPBOARD}} }, '${TM_FILENAME} line ${TM_LINE_NUMBER}')"
+    ]
   }
 }
