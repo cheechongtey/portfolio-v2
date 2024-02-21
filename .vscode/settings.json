@@ -23,5 +23,9 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "editor.wordWrap": "off"
+  "editor.wordWrap": "off",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
 }

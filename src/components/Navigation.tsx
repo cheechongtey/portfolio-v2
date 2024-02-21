@@ -25,12 +25,12 @@ const NAV_ITEM = [
 
 const Navigation = () => {
   return (
-    <nav className='fixed inset-x-0 top-0 py-[29px] px-[50px]'>
+    <nav className='fixed inset-x-0 top-0 py-[29px] px-6'>
       <div className='flex justify-between'>
         <span className='text-green'>
           <Logo className='w-[42px] h-[42px] stroke-2' />
         </span>
-        <div className='flex gap-4'>
+        <div className='hidden md:flex gap-4'>
           <ol className='flex items-center text-slate-50 [counter-reset:item]'>
             {NAV_ITEM.map((x) => (
               <li
