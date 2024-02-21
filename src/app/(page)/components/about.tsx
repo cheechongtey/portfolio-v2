@@ -8,11 +8,11 @@ const skills = [
   'React',
   'Vue',
   'Node.js',
-  'NuxtJs',
-  'NextJs',
+  'NuxtJS',
+  'NextJS',
 ];
 
-const AboutSetion = () => {
+const AboutSection = () => {
   return (
     <section id='about' className='section max-w-[900px] mx-auto'>
       <h3 className='section-title'>About Me</h3>
@@ -45,8 +45,8 @@ const AboutSetion = () => {
             })}
           </ul>
         </div>
-        <div className='max-w-[300px]'>
-          <div className='relative shadow-profile w-full bg-green h-[300px] rounded-[4px]'>
+        <div className='max-w-[250px] md:max-w-[300px]'>
+          <div className='relative shadow-profile w-full bg-green h-[250px] md:h-[300px] rounded-[4px]'>
             <div className='profile-pic'>
               <div className='wrapper'>
                 <NextImage
@@ -67,4 +67,4 @@ const AboutSetion = () => {
   );
 };
 
-export default AboutSetion;
+export default AboutSection;

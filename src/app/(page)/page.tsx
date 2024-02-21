@@ -5,7 +5,10 @@ import * as React from 'react';
 
 import PrimaryLink from '@/components/links/PrimaryLink';
 
-import AboutSetion from '@/app/(page)/components/about';
+import AboutSection from '@/app/(page)/components/about';
+import ContactSection from '@/app/(page)/components/contact';
+import ProjectSection from '@/app/(page)/components/projects';
+import WorkSection from '@/app/(page)/components/work';
 
 /**
  * SVGR Support
@@ -49,7 +52,10 @@ export default function HomePage() {
           </PrimaryLink>
         </p>
       </section>
-      <AboutSetion />
+      <AboutSection />
+      <WorkSection />
+      <ProjectSection />
+      <ContactSection />
     </main>
   );
 }

@@ -28,6 +28,7 @@
 
   --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
   --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --transition-custom: cubic-bezier(0.645, 0.045, 0.355, 1);
   /* #endregion  /**======== Primary Color =========== */
 
   --color-navy-default: #0a192f;
@@ -248,12 +249,8 @@
   .profile-pic::after,
   .profile-pic::before {
     content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    border-radius: 4px;
     transition: var(--transition);
+    @apply absolute block w-full h-[250px] rounded-[4px] md:h-[300px];
   }
 
   .profile-pic::after {

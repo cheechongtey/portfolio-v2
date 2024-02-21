@@ -81,6 +81,12 @@ const config = {
       boxShadow: {
         profile: '0 10px 30px -15px var(--navy-shadow)',
       },
+      transitionTimingFunction: {
+        custom: 'var(--transition-custom)',
+      },
+      transitionDuration: {
+        250: '250ms',
+      },
     },
   },
   plugins: [

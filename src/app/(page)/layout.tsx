@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 
 const layout = ({ children }: { children: React.ReactNode }) => {
@@ -7,6 +8,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Navigation />
       {children}
+      <Footer />
     </>
   );
 };
