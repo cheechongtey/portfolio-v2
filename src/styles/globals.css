@@ -283,4 +283,21 @@
     transition: var(--transition);
     overflow: hidden;
   }
+
+  .inner-hamburger {
+    @apply block relative w-[30px] h-0.5 bg-green;
+  }
+
+  .inner-hamburger::after,
+  .inner-hamburger::before {
+    @apply content-[""] h-0.5 bg-green absolute right-0;
+  }
+
+  .inner-hamburger::before {
+    @apply w-9 -top-2.5;
+  }
+
+  .inner-hamburger::after {
+    @apply w-6 -bottom-2.5;
+  }
 }

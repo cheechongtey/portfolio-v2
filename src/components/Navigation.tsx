@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '@/components/buttons/Button';
+import Hamburger from '@/components/Hamburger';
 
 import Logo from '~/svg/Logo.svg';
 
@@ -45,6 +46,7 @@ const Navigation = () => {
             Resume
           </Button>
         </div>
+        <Hamburger />
       </div>
     </nav>
   );
