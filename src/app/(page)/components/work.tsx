@@ -26,8 +26,9 @@ const jobs = [
     position: 'Software Developer',
     duration: 'October 2017 - May 2021',
     task: [
-      'when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      'It has survived not only five centuries, but also the',
+      'Developed and shipped high volume ecommerce for the client with laravel',
+      'Proposed and revamp the existing system into React with Laravel.',
+      'Collaborated with mobile team to build api for the ecommerce mobile apps',
     ],
   },
   {
@@ -35,8 +36,8 @@ const jobs = [
     position: 'Intern',
     duration: 'June 2017 - August 2017',
     task: [
-      'into electronic typesetting, remaining essentially unchanged. It was popularised in the',
-      '1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+      'Migrating existing system into wordpress.',
+      'Exploring plugins to implement into the system for providing more features to the user.',
     ],
   },
 ];

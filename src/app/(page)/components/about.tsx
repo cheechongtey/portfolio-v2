@@ -26,10 +26,10 @@ const AboutSection = () => {
           </p>
           <p>
             Fast-forward to today, and I’ve had the privilege of working at an
-            advertising agency, a start-up, a huge corporation, and a
-            student-led design studio. My main focus these days is building
-            accessible, inclusive products and digital experiences at
-            Upstatement for a variety of clients.
+            software provider start-up, a huge corporation, and now - a student
+            enrolment platform where my main focus these days is building
+            accessible, inclusive products and digital experiences to provide
+            valuable information for student about higher level education.
           </p>
           <p>Here are a few technologies I’ve been working with recently:</p>
           <ul className='grid grid-cols-2 text-2xs font-mono gap-2'>
