@@ -1,4 +1,12 @@
-import React, { CSSProperties, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useAnimation, useInView } from 'framer-motion';
+import React, {
+  CSSProperties,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -8,6 +16,7 @@ const jobs = [
     position: 'Senior Frontend Developer',
     duration: 'April 2022 - Current',
     task: [
+      "Write modern, performant, maintainable code for company's website and internal projects",
       'Write modern, performant, maintainable code for a diverse array of client and internal projects',
       'test123',
     ],
@@ -42,13 +51,39 @@ const jobs = [
   },
 ];
 
+const contentVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      opacity: { duration: 0.5, delay: 0.3 },
+      y: { duration: 0.5 },
+    },
+  },
+  hidden: { opacity: 0, y: 100 },
+};
+
 const WorkSection = () => {
   const [tabIndex, setTabIndex] = useState<number>(0);
   const selectedJob = useMemo(() => {
     return jobs[tabIndex];
   }, [tabIndex]);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
   return (
-    <section
+    <motion.section
+      ref={ref}
+      initial='hidden'
+      animate={controls}
+      variants={contentVariants}
       id='about'
       className='section max-w-[700px] mx-auto md:min-h-[500px] md:pt-24'
     >
@@ -107,7 +142,7 @@ const WorkSection = () => {
           </ul>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

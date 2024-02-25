@@ -1,7 +1,8 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
-import { motion, useScroll } from 'framer-motion';
+import { cubicBezier, motion, useScroll } from 'framer-motion';
+import { stagger, useAnimate } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 
 import useOnClickOutside from '@/hooks/useOnClickOutside';
@@ -56,11 +57,26 @@ const navVariants = {
 const Navigation = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
+  const [scope, animate] = useAnimate();
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const [hidden, setHidden] = useState<boolean>(false);
 
   useOnClickOutside(wrapperRef, () => setExpanded(false));
+
+  useEffect(() => {
+    if (scope.current) {
+      animate(
+        '.nav-item',
+        { opacity: 1, y: 0 },
+        {
+          delay: stagger(0.1, { startDelay: 0.2 }),
+          ease: cubicBezier(0.645, 0.045, 0.355, 1),
+          duration: 0.25,
+        }
+      );
+    }
+  }, [animate, scope]);
 
   useEffect(() => {
     if (window && window !== undefined) {
@@ -83,7 +99,7 @@ const Navigation = () => {
   useEffect(() => {
     const update = (current: number) => {
       const previous = scrollY.getPrevious() ?? 0;
-      // console.log(props);
+
       if (current < previous) {
         setHidden(false);
       } else if (current > 100 && current > previous) {
@@ -107,21 +123,26 @@ const Navigation = () => {
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
     >
       <div className='flex justify-between'>
-        <span className='text-green'>
+        <motion.span
+          className='text-green'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Logo className='w-[42px] h-[42px] stroke-2' />
-        </span>
-        <div className='hidden md:flex gap-4'>
+        </motion.span>
+        <div ref={scope} className='hidden md:flex gap-4'>
           <ol className='flex items-center text-slate-50 [counter-reset:item]'>
             {NAV_ITEM.map((x) => (
               <li
                 key={x.id}
-                className='mx-[5px] font-mono text-2xs leading-5 p-2.5 before:text-xs transition-custom-all hover:text-green before:content-["0"counter(item)"."] [counter-increment:item_1] before:mr-1 before:text-green'
+                className='opacity-0 nav-item mx-[5px] font-mono text-2xs leading-5 p-2.5 before:text-xs transition-custom-all hover:text-green before:content-["0"counter(item)"."] [counter-increment:item_1] before:mr-1 before:text-green'
               >
                 {x.title}
               </li>
             ))}
           </ol>
-          <Button size='sm' className='font-mono'>
+          <Button size='sm' className='opacity-0 font-mono nav-item'>
             Resume
           </Button>
         </div>

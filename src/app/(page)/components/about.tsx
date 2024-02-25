@@ -1,4 +1,6 @@
-import React from 'react';
+import { motion } from 'framer-motion';
+import { useAnimation, useInView } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 import NextImage from '@/components/NextImage';
 
@@ -12,11 +14,41 @@ const skills = [
   'NextJS',
 ];
 
+const contentVariants = (delay: number) => {
+  return {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        opacity: { duration: 0.5, delay },
+        y: { duration: 0.5, delay },
+      },
+    },
+    hidden: { opacity: 0, y: 100 },
+  };
+};
+
 const AboutSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
   return (
-    <section id='about' className='section max-w-[900px] mx-auto'>
-      <h3 className='section-title'>About Me</h3>
-      <div className='grid grid-cols-1 md:grid-cols-[3fr,2fr] gap-12'>
+    <motion.section
+      ref={ref}
+      initial='hidden'
+      animate={controls}
+      variants={contentVariants(0)}
+      id='about'
+      className='section max-w-[900px] mx-auto'
+    >
+      <motion.h3 className='section-title'>About Me</motion.h3>
+      <motion.div className='grid grid-cols-1 md:grid-cols-[3fr,2fr] gap-12'>
         <div>
           <p>
             Hello! My name is Chee Chong and I enjoy creating things that live
@@ -62,8 +94,8 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

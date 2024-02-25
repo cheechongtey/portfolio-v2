@@ -1,5 +1,8 @@
+'use client';
+
 import { cva, VariantProps } from 'class-variance-authority';
-import React from 'react';
+import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -15,12 +18,31 @@ const variants = cva('flex justify-center gap-4', {
   },
 });
 
+const contentVariants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 1.5,
+    },
+  },
+  hidden: { opacity: 0 },
+};
+
 const SocialButtonGroups = ({
   orientation,
   className,
 }: VariantProps<typeof variants> & { className?: string }) => {
+  const ref = useRef(null);
+
   return (
-    <ul className={cn(variants({ orientation }), className)}>
+    <motion.ul
+      ref={ref}
+      initial='hidden'
+      animate='visible'
+      variants={contentVariants}
+      className={cn(variants({ orientation }), className)}
+    >
       <a
         href='https://github.com/cheechongtey'
         target='_blank'
@@ -35,7 +57,7 @@ const SocialButtonGroups = ({
       >
         <IconLinkedin />
       </a>
-    </ul>
+    </motion.ul>
   );
 };
 

@@ -25,7 +25,7 @@ import WorkSection from '@/app/(page)/components/work';
 // to customize the default configuration.
 
 export default function HomePage() {
-  const [isMounted, setIsMounted] = React.useState<boolean>(false);
+  const [isMounted, setIsMounted] = React.useState<boolean>(true);
 
   const finishLoading = () => {
     setIsMounted(true);
@@ -45,16 +45,48 @@ export default function HomePage() {
           transition={{ duration: 0.4 }}
         >
           <section className='flex flex-col justify-center h-full-dvh'>
-            <h1 className='text-green font-mono mb-[30px] ml-1 [font-size:clamp(14px,5vw,16px)] leading-[1.1]'>
+            <motion.h1
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.6 },
+                y: { duration: 0.5, delay: 0.6 },
+              }}
+              className='text-green font-mono mb-[30px] ml-1 [font-size:clamp(14px,5vw,16px)] leading-[1.1]'
+            >
               Hi, my name is
-            </h1>
-            <h2 className='big-heading m-0 text-slate-50 leading-[1.1]'>
+            </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.7 },
+                y: { duration: 0.5, delay: 0.7 },
+              }}
+              className='big-heading m-0 text-slate-50 leading-[1.1]'
+            >
               Chee Chong.
-            </h2>
-            <h3 className='big-heading m-0 text-slate mt-2 leading-[0.9]'>
+            </motion.h2>
+            <motion.h3
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.8 },
+                y: { duration: 0.5, delay: 0.8 },
+              }}
+              className='big-heading m-0 text-slate mt-2 leading-[0.9]'
+            >
               I build things for the web.
-            </h3>
-            <p className='text-slate text-lg md:text-xl mt-5 max-w-[540px]'>
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.9 },
+                y: { duration: 0.5, delay: 0.9 },
+              }}
+              className='text-slate text-lg md:text-xl mt-5 max-w-[540px]'
+            >
               I’m a software engineer specializing in building (and occasionally
               designing) exceptional digital experiences. Currently, I’m focused
               on building accessible, student-centered products at{' '}
@@ -66,7 +98,7 @@ export default function HomePage() {
               >
                 UniEnrol
               </PrimaryLink>
-            </p>
+            </motion.p>
           </section>
           <AboutSection />
           <WorkSection />

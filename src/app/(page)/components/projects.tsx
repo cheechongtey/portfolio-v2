@@ -1,4 +1,6 @@
-import React from 'react';
+import { useAnimation, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 import IconExternal from '@/components/icons/external';
 import IconFolder from '@/components/icons/folder';
@@ -92,9 +94,38 @@ const projects = [
   },
 ];
 
+const contentVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      opacity: { duration: 0.5, delay: 0.3 },
+      y: { duration: 0.5 },
+    },
+  },
+  hidden: { opacity: 0, y: 100 },
+};
+
 const ProjectSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
   return (
-    <section id='about' className='section max-w-[900px] mx-auto'>
+    <motion.section
+      ref={ref}
+      initial='hidden'
+      animate={controls}
+      variants={contentVariants}
+      id='about'
+      className='section max-w-[900px] mx-auto'
+    >
       <h3 className='section-title'>Some Things I’ve Built</h3>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 transition-custom-all'>
         {projects.map((x, key) => (
@@ -150,7 +181,7 @@ const ProjectSection = () => {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
