@@ -62,6 +62,10 @@ const Navigation = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [hidden, setHidden] = useState<boolean>(false);
 
+  const downloadResume = () => {
+    window.open('/resume/Resume-2024.pdf', '_blank');
+  };
+
   useOnClickOutside(wrapperRef, () => setExpanded(false));
 
   useEffect(() => {
@@ -142,7 +146,11 @@ const Navigation = () => {
               </li>
             ))}
           </ol>
-          <Button size='sm' className='opacity-0 font-mono nav-item'>
+          <Button
+            size='sm'
+            className='opacity-0 font-mono nav-item'
+            onClick={() => downloadResume()}
+          >
             Resume
           </Button>
         </div>
@@ -170,6 +178,7 @@ const Navigation = () => {
               <Button
                 size='base'
                 className='font-mono px-10 py-4 bg-navy-light'
+                onClick={() => downloadResume()}
               >
                 Resume
               </Button>
