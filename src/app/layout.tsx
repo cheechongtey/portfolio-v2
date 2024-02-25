@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     images: [`${siteConfig.url}/images/og.jpg`],
     // creator: '@th_clarence',
   },
+  other: {
+    'google-site-verification': 'lDfbEVjCBR_53SqslNNIgpJJellBK6lL83xxNkR2AfM',
+  },
   // authors: [
   //   {
   //     name: 'Theodorus Clarence',

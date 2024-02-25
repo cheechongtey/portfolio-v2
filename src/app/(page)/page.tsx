@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 import * as React from 'react';
 
 import PrimaryLink from '@/components/links/PrimaryLink';
@@ -33,9 +32,6 @@ export default function HomePage() {
 
   return (
     <main className='my-0 mx-auto w-full max-w-[1600px] px-6 sm:px-12 md:px-[100px] lg:px-[150px] [counter-reset:item]'>
-      <Head>
-        <title>Hi</title>
-      </Head>
       {!isMounted ? (
         <Loader finishLoading={finishLoading} />
       ) : (
