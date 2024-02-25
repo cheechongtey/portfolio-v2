@@ -25,7 +25,7 @@ import WorkSection from '@/app/(page)/components/work';
 // to customize the default configuration.
 
 export default function HomePage() {
-  const [isMounted, setIsMounted] = React.useState<boolean>(true);
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
 
   const finishLoading = () => {
     setIsMounted(true);

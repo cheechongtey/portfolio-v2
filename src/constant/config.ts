@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Chee Chong - Frontend Developer',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Explore a curated collection of software development projects showcasing expertise in coding, problem-solving, and innovation. From web applications to mobile development, discover impactful solutions and cutting-edge technologies. Connect to collaborate on turning ideas into reality.',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://portfolio-v2-nine-theta.vercel.app',
 };
