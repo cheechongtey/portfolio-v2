@@ -9,8 +9,11 @@ const Footer = () => {
         rel='noopener noreferrer'
         target='_blank'
       >
-        Designed by Brittany Chiang
+        Designed by Brittany Chiang.
       </a>
+      <div className='text-xs font-mono'>
+        Cloning this design with NextJS and TailwindCSS.
+      </div>
     </div>
   );
 };

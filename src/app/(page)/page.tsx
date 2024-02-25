@@ -9,7 +9,7 @@ import Loader from '@/components/Loader';
 
 import AboutSection from '@/app/(page)/components/about';
 import ContactSection from '@/app/(page)/components/contact';
-import ProjectSection from '@/app/(page)/components/projects';
+import ExperienceSection from '@/app/(page)/components/experience';
 import WorkSection from '@/app/(page)/components/work';
 
 /**
@@ -87,9 +87,9 @@ export default function HomePage() {
               }}
               className='text-slate text-lg md:text-xl mt-5 max-w-[540px]'
             >
-              I’m a software engineer specializing in building (and occasionally
-              designing) exceptional digital experiences. Currently, I’m focused
-              on building accessible, student-centered products at{' '}
+              I’m a software engineer specializing in building exceptional
+              digital experiences. Currently, I’m focused on building
+              accessible, student-centered products at{' '}
               <PrimaryLink
                 href='https://unienrol.com'
                 target='_blank'
@@ -101,8 +101,8 @@ export default function HomePage() {
             </motion.p>
           </section>
           <AboutSection />
+          <ExperienceSection />
           <WorkSection />
-          <ProjectSection />
           <ContactSection />
         </motion.div>
       )}

@@ -66,6 +66,24 @@ const Navigation = () => {
     window.open('/resume/Resume-2024.pdf', '_blank');
   };
 
+  const onNavItem = (id: string) => {
+    const item = document.querySelector(id);
+
+    if (item) {
+      item.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const onMobileNavItem = (id: string) => {
+    const main = document.querySelector('main');
+    onNavItem(id);
+    setExpanded(false);
+    if (main) {
+      document.body.classList.remove('overflow-hidden');
+      main.classList.remove('blur');
+    }
+  };
+
   useOnClickOutside(wrapperRef, () => setExpanded(false));
 
   useEffect(() => {
@@ -140,7 +158,8 @@ const Navigation = () => {
             {NAV_ITEM.map((x) => (
               <li
                 key={x.id}
-                className='opacity-0 nav-item mx-[5px] font-mono text-2xs leading-5 p-2.5 before:text-xs transition-custom-all hover:text-green before:content-["0"counter(item)"."] [counter-increment:item_1] before:mr-1 before:text-green'
+                className='cursor-pointer opacity-0 nav-item mx-[5px] font-mono text-2xs leading-5 p-2.5 before:text-xs transition-custom-all hover:text-green before:content-["0"counter(item)"."] [counter-increment:item_1] before:mr-1 before:text-green'
+                onClick={() => onNavItem(x.id)}
               >
                 {x.title}
               </li>
@@ -170,6 +189,7 @@ const Navigation = () => {
                   <li
                     key={x.id}
                     className='flex flex-col text-lg gap-2 hover:text-green cursor-pointer mb-6 before:content-["0"counter(item)"."] before:text-sm before:text-green transition-custom-all [counter-increment:item_1] font-mono'
+                    onClick={() => onMobileNavItem(x.id)}
                   >
                     {x.title}
                   </li>

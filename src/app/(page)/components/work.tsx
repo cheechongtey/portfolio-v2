@@ -1,53 +1,102 @@
-import { motion } from 'framer-motion';
 import { useAnimation, useInView } from 'framer-motion';
-import React, {
-  CSSProperties,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
-import { cn } from '@/lib/utils';
+import IconExternal from '@/components/icons/external';
+import IconFolder from '@/components/icons/folder';
+import IconGitHub from '@/components/icons/github';
 
-const jobs = [
+const projects = [
   {
-    name: 'Uni Enrol',
-    position: 'Senior Frontend Developer',
-    duration: 'April 2022 - Current',
-    task: [
-      "Write modern, performant, maintainable code for company's website and internal projects",
-      'Write modern, performant, maintainable code for a diverse array of client and internal projects',
-      'test123',
+    name: 'Online University Enrolment Platform',
+    desc: 'UniEnrol is Malaysia’s largest online university enrolment platform and provides service to discover scholarships.',
+    stack: [
+      'PHP',
+      'VueJS',
+      'Less',
+      'Postgres',
+      'MongoDB',
+      'Laravel',
+      'Bootstrap',
     ],
+    link: 'https://unienrol.com',
   },
   {
-    name: 'Avanade Malaysia',
-    position: 'Frontend Developer',
-    duration: 'June 2021 - March 2022',
-    task: [
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    ],
+    name: 'Online learning platform',
+    desc: 'EduKaji is an online learning platform that aims to empower students to achieve their goals through learning.',
+    stack: ['NuxtJS', 'VueJS', 'FastAPI', 'Postgres'],
+    link: 'https://edukaji.my',
   },
   {
-    name: 'ISCity',
-    position: 'Software Developer',
-    duration: 'October 2017 - May 2021',
-    task: [
-      'Developed and shipped high volume ecommerce for the client with laravel',
-      'Proposed and revamp the existing system into React with Laravel.',
-      'Collaborated with mobile team to build api for the ecommerce mobile apps',
-    ],
+    name: 'One-stop Education Centre',
+    desc: 'MMS is the education placement specialist to o guiding and connecting students to educational institutions worldwide.',
+    stack: ['NextJS', 'Tailwind CSS', 'Koa', 'Strapi'],
+    link: 'https://mmsstudyabroad.com',
   },
   {
-    name: 'Bluevy',
-    position: 'Intern',
-    duration: 'June 2017 - August 2017',
-    task: [
-      'Migrating existing system into wordpress.',
-      'Exploring plugins to implement into the system for providing more features to the user.',
+    name: 'Online educational platform',
+    desc: 'Uni Enrol Articles offering insightful articles and resources to aid in academic success and personal development.',
+    stack: ['WordPress', 'PHP'],
+    link: 'https://articles.unienrol.com',
+  },
+  {
+    name: 'V-MORE',
+    desc: 'Singapore based e-commerce platform and marketplace',
+    link: 'https://sg.vmoreasia.com',
+    stack: ['Laravel', 'MySQL', 'PHP', 'Bootstrap'],
+  },
+  // {
+  //   name: 'Constant Pharmacy Online Store',
+  //   desc: 'Malaysia based pharmacy online store',
+  //   link: null,
+  //   stack: ['Laravel', 'MySQL', 'PHP'],
+  // },
+  {
+    name: 'Unifi Rewards',
+    desc: 'unifi Rewards is a one-stop self service portal for unifi customers to manage their earned rewards.',
+    stack: [
+      'PHP',
+      'JQuery',
+      'SASS',
+      'MYSQL',
+      'Laravel',
+      'Bootstrap',
+      'Pimcore',
     ],
+    link: 'https://unifi.com.my/rewards',
+  },
+  {
+    name: 'iottechnex (Admin Portal)',
+    desc: `Iottechnex provides digital solutions that tailored to the customer's needs and requirements.`,
+    stack: ['PHP', 'ReactJS', 'SASS', 'MYSQL', 'Laravel', 'Bootstrap'],
+    link: 'https://iottechnex.com/',
+  },
+  {
+    name: 'Side Project I',
+    desc: 'Cloning existing website for learning purpose.',
+    stack: ['HTML', 'CSS', 'JQuery'],
+    link: 'https://blue-plant-057b70100.azurestaticapps.net/',
+    github: 'https://github.com/cheechongtey/LWClone',
+  },
+  {
+    name: 'Side Project II',
+    desc: 'Cloning existing website that with trending web design feels like static and animations.',
+    stack: ['HTML', 'CSS', 'JQuery'],
+    link: 'https://proud-smoke-04bb04e10.azurestaticapps.net/',
+    github: 'https://github.com/cheechongtey/virtually-clone',
+  },
+  {
+    name: 'Portfolio V2',
+    desc: 'Cloning brittanychiang fantastic portfolio and build it with NextJS with Tailwind',
+    stack: ['NextJS', 'Tailwind CSS'],
+    link: 'https://brittanychiang.com/',
+    github: 'https://github.com/cheechongtey/portfolio-v2',
+  },
+  {
+    name: 'Instragram Clone',
+    desc: 'Clone instagram for learning purpose.',
+    stack: ['React', 'Express', 'Graphql', 'MongoDB'],
+    github: 'https://github.com/cheechongtey/instagram-clone-for-training',
   },
 ];
 
@@ -64,10 +113,6 @@ const contentVariants = {
 };
 
 const WorkSection = () => {
-  const [tabIndex, setTabIndex] = useState<number>(0);
-  const selectedJob = useMemo(() => {
-    return jobs[tabIndex];
-  }, [tabIndex]);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const controls = useAnimation();
@@ -84,63 +129,63 @@ const WorkSection = () => {
       initial='hidden'
       animate={controls}
       variants={contentVariants}
-      id='about'
-      className='section max-w-[700px] mx-auto md:min-h-[500px] md:pt-24'
+      id='work'
+      className='section max-w-[900px] mx-auto'
     >
-      <h3 className='section-title'>Where I’ve Worked</h3>
-      <div className='grid grid-cols-1 md:grid-cols-[1fr,3fr] gap-10'>
-        <div
-          role='tablist'
-          aria-label='Job tabs'
-          className='flex md:block relative max-md:overflow-y-scroll'
-        >
-          {jobs.map((x, key) => (
-            <button
-              key={key}
-              id={`tab-${key}`}
-              className={cn(
-                'max-md:flex-[0_0_150px] max-md:border-b-2 md:border-l-2 md:text-left md:pl-5 text-2xs font-mono h-[42px] text-center border-solid border-navy-50 w-full hover:bg-navy-light hover:text-green transition-custom-all focus:bg-navy-light',
-                {
-                  'text-green': tabIndex === key,
-                }
-              )}
-              onClick={() => setTabIndex(key)}
-              tabIndex={key === tabIndex ? 0 : -1}
-            >
-              <span>{x.name}</span>
-            </button>
-          ))}
+      <h3 className='section-title'>Some Things I’ve Built</h3>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 transition-custom-all'>
+        {projects.map((x, key) => (
           <div
-            className={cn(
-              'absolute h-0.5 w-[150px] md:w-0.5 md:h-[42px] bg-green max-md:bottom-0 md:left-0 transition-custom-all',
-              [`md:top-[var(--offset)] max-md:left-[var(--mobile-offset)]`]
-            )}
-            style={
-              {
-                '--offset': `${tabIndex * 42}px`,
-                '--mobile-offset': `${tabIndex * 150}px`,
-              } as CSSProperties
-            }
-          ></div>
-        </div>
-        <div className='flex-1 font-calibre'>
-          <h4 className='text-xl font-medium text-slate-50 mb-0.5'>
-            {selectedJob.position}
-          </h4>
-          <p className='font-mono text-2xs mb-6'>{selectedJob.duration}</p>
-          <ul className='text-lg font-primary [&>*:not(:last-child)]:mb-2.5'>
-            {selectedJob.task.map((x) => {
-              return (
-                <li
-                  key={x}
-                  className='relative before:content-["▹"] before:text-green before:absolute before:left-0 pl-5 not'
+            key={key}
+            className='p-6 min-h-[320px] relative rounded-[4px] bg-navy-light group cursor-pointer flex flex-col gap-5 justify-between transition-custom-all hover:-translate-y-1.5'
+            onClick={() => window.open(x.link, '_blank')}
+          >
+            <div>
+              <div className='flex items-center justify-between mb-10'>
+                <span className='text-green w-10 h-10'>
+                  <IconFolder />
+                </span>
+                <div className='flex items-center gap-2'>
+                  {x.github && (
+                    <a
+                      href={x.github}
+                      className='w-[22px] h-[22px] p-0.5 text-slate-light hover:text-green transition-custom-all relative -bottom-[1px]'
+                      target='_blank'
+                    >
+                      <IconGitHub />
+                    </a>
+                  )}
+                  {x.link && (
+                    <a
+                      href={x.link}
+                      className='w-[22px] h-[22px] text-slate-light hover:text-green transition-custom-all'
+                      target='_blank'
+                    >
+                      <IconExternal />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p className='text-[22px] text-slate-50 mb-2.5 font-semibold leading-[1.1] group-hover:text-green transition-custom-all'>
+                {x.name}
+              </p>
+              <p className='text-slate-light text-[17px] leading-[1.3] mb-0'>
+                {x.desc}
+              </p>
+            </div>
+
+            <div className='flex flex-wrap gap-y-1 gap-x-4'>
+              {x.stack.map((stack, index) => (
+                <span
+                  key={`${stack}_${index}`}
+                  className='font-mono leading-relaxed text-xs'
                 >
-                  {x}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                  {stack}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </motion.section>
   );
