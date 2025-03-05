@@ -83,17 +83,19 @@ export default function HomePage() {
               }}
               className='text-slate text-lg md:text-xl mt-5 max-w-[540px]'
             >
-              I’m a software engineer specializing in building exceptional
-              digital experiences. Currently, I’m focused on building
-              accessible, student-centered products at{' '}
+              I'm a software engineer specializing in building exceptional
+              digital experiences. Currently, I’m focused on developing
+              high-performance, user-centric solutions at{' '}
               <PrimaryLink
                 href='https://unienrol.com'
                 target='_blank'
                 rel='noreferrer'
                 className='text-green'
               >
-                UniEnrol
+                Sgcarmart
               </PrimaryLink>
+              , enhancing the automotive marketplace with cutting-edge
+              technology.
             </motion.p>
           </section>
           <AboutSection />
