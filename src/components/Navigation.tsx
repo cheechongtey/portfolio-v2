@@ -63,7 +63,7 @@ const Navigation = () => {
   const [hidden, setHidden] = useState<boolean>(false);
 
   const downloadResume = () => {
-    window.open('/resume/Resume-2024.pdf', '_blank');
+    window.open('/resume/Resume-2025.pdf', '_blank');
   };
 
   const onNavItem = (id: string) => {
