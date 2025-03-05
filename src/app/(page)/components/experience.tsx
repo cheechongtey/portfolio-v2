@@ -12,9 +12,20 @@ import { cn } from '@/lib/utils';
 
 const jobs = [
   {
+    name: 'Sgcarmart',
+    position: 'Senior Frontend Developer',
+    duration: 'Aug 2024 - Present',
+    task: [
+      'Involved the development of a high-traffic web application, improving load times by 40% through optimized rendering and code splitting.',
+      'Spearheaded the adoption of React.js best practices, reducing technical debt and improving maintainability.',
+      'Lead frontend architecture decisions, ensuring modular, maintainable, and efficient codebases.',
+      'Optimized frontend security, mitigating XSS, CSRF, and security vulnerabilities.',
+    ],
+  },
+  {
     name: 'Uni Enrol',
     position: 'Senior Frontend Developer',
-    duration: 'April 2022 - Current',
+    duration: 'April 2022 - July 2024',
     task: [
       "Write modern, performant, maintainable code for company's website and internal projects.",
       'Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, NextJS, React, WordPress and Strapi.',

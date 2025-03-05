@@ -8,6 +8,12 @@ import IconGitHub from '@/components/icons/github';
 
 const projects = [
   {
+    name: 'Leading car platform',
+    desc: "SGCarMart is Singapore's leading car platform, offering a comprehensive database of new and used cars for sale",
+    stack: ['NextJs', 'React', 'Tailwind', 'SCSS', 'PHP'],
+    link: 'https://sgcarmart.com',
+  },
+  {
     name: 'Online University Enrolment Platform',
     desc: 'UniEnrol is Malaysia’s largest online university enrolment platform and provides service to discover scholarships.',
     stack: [
